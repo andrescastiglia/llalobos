@@ -32,7 +32,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             pm2 stop llalobos || true
-            pm2 delete llalobos || true
             rm -r -f /opt/llalobos/*
 
       - name: Transfer
@@ -55,4 +54,4 @@ jobs:
           script: |
             cd /opt/llalobos/
             npm install
-            pm2 start npm --name llalobos -- run start
+            pm2 start llalobos
