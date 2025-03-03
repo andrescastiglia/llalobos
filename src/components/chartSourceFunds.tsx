@@ -1,6 +1,6 @@
 "use client";
 
-import { SourceFunds } from "@/api/transactions";
+import { SourceFunds } from "@/api/funds";
 import React from "react";
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Label } from "recharts";
 

@@ -19,7 +19,7 @@ export const Ledger: React.FC<LedgerPageProps> = ({ ledger }) => {
 
     {ledger.map((journal) => (
       <div key={journal.id} className="grid grid-cols-2 sm:grid-cols-4 items-center pb-1 text-sm break-words">
-        <div className="hidden sm:block px-2 py-1">{journal.date}</div>
+        <div className="hidden sm:block px-2 py-1">{journal.date.toLocaleString()}</div>
         <div className="px-2 py-1 truncate">{journal.description}</div>
         <div className="hidden sm:block px-2 py-1 text-right text-blue-700">
           {journal.amount >= 0 ? journal.amount.toLocaleString() : ""}

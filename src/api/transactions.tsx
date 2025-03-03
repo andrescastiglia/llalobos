@@ -1,75 +1,95 @@
+import { baseUrl } from "./const";
+
 export interface Journal {
   id: string;
   source: string;
-  date: string;
+  date: Date;
   amount: number;
   description: string;
 }
 
-export interface SourceFunds {
-  name: string;
-  value: number;
+interface ResponseRow {
+  transaction_date: Date;
+  source_id: string;
+  payer_name: string;
+  transaction_amount: number;
+  transaction_type: TransactionType;
 }
 
-export interface Goal {
-  balance: number;
-  target: number;
+interface Response {
+  data: ResponseRow[];
+  page: number;
+  page_size: number;
+  total: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type TransactionType =
+  | "SETTLEMENT"
+  | "REFUND"
+  | "CHARGEBACK"
+  | "DISPUTE"
+  | "WITHDRAWAL"
+  | "WITHDRAWAL_CANCEL"
+  | "PAYOUT";
+
+function direction(transactionType: TransactionType): 1 | -1 | 0 {
+  switch (transactionType) {
+    case "SETTLEMENT":
+      return 1; // Cobro
+    case "REFUND":
+    case "CHARGEBACK":
+    case "DISPUTE":
+    case "WITHDRAWAL":
+    case "PAYOUT":
+      return -1; // Pago
+    case "WITHDRAWAL_CANCEL":
+      return 1; // Un retiro cancelado es volver a tener el dinero disponible.
+    default:
+      console.error(`Unknown transaction type: ${transactionType}`);
+      return 0;
+  }
+}
+
+function description(transactionType: TransactionType): string {
+  switch (transactionType) {
+    case "SETTLEMENT":
+      return "Pago aprobado";
+    case "REFUND":
+      return "Devolución de dinero";
+    case "CHARGEBACK":
+      return "Contracargo";
+    case "DISPUTE":
+      return "Reclamo";
+    case "WITHDRAWAL":
+      return "Retiro de cuenta bancaria";
+    case "PAYOUT":
+      return "Retiro de efectivo";
+    case "WITHDRAWAL_CANCEL":
+      return "Retiro a la cuenta bancaria cancelado";
+    default:
+      return "Transaccion desconocida";
+  }
+}
+
 async function fetchTransactions(): Promise<Journal[]> {
-  const response = await fetch("/api/transactions");
+  const response = await fetch(`${baseUrl}/api/transactions`);
   if (!response.ok) throw new Error("Error fetching transactions");
-  return response.json();
+  const body: Response = await response.json();
+  return body.data.map((row) => ({
+    id: row.source_id,
+    source: row.payer_name,
+    date: row.transaction_date,
+    amount: row.transaction_amount * direction(row.transaction_type),
+    description: description(row.transaction_type),
+  }));
 }
 
 export default async function transactions(): Promise<Journal[]> {
   let ledger: Journal[] = [];
-
-  //try {
-  //  ledger = await fetchTransactions();
-  //} catch (error) {
-  const income1: Journal = {
-    id: "1",
-    source: "Juan Pérez",
-    date: "2024-10-27",
-    amount: 1000,
-    description: "Contribucion de Juan Pérez",
-  };
-  const income2: Journal = {
-    id: "2",
-    source: "María Gómez",
-    date: "2024-10-28",
-    amount: 2000,
-    description: "Contribucion de María Gómez",
-  };
-  const outcome1: Journal = {
-    id: "3",
-    source: "Inmobiliaria",
-    date: "2024-10-28",
-    amount: -2300,
-    description: "Alquiler",
-  };
-
-  ledger = [income1, income2, outcome1];
-
-  //  console.error("Failed fetching transactions:", error);
-  //}
-
+  try {
+    ledger = await fetchTransactions();
+  } catch (error) {
+    console.error("Failed fetching transactions:", error);
+  }
   return ledger;
-}
-
-export async function groupBySource(): Promise<SourceFunds[]> {
-  const incomes = (await transactions()).filter((item) => item.amount > 0);
-
-  const grouped = incomes.reduce<Record<string, number>>((acc, curr) => {
-    acc[curr.source] = (acc[curr.source] || 0) + curr.amount;
-    return acc;
-  }, {});
-
-  return Object.entries(grouped).map(([name, value]) => ({ name, value }));
-}
-
-export async function goal(): Promise<Goal> {
-  return { balance: 100, target: 3000 };
 }

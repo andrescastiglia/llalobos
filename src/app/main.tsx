@@ -1,13 +1,9 @@
-import transactions, {
-  groupBySource,
-  Journal,
-  SourceFunds,
-  Goal,
-  goal,
-} from "@/api/transactions";
+import transactions, { Journal } from "@/api/transactions";
 import { Ledger } from "@/components/ledger";
 import { ChartSourceFunds } from "@/components/chartSourceFunds";
 import { ChartTarget } from "@/components/chartTarget";
+import { groupBySource, SourceFunds } from "@/api/funds";
+import { goal, Goal } from "@/api/goals";
 
 export default async function main() {
   const ledger: Journal[] = await transactions();
