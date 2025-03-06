@@ -16,6 +16,20 @@ export const metadata: Metadata = {
   title: "La Libertad Avanza Lobos",
   description:
     "Contribuciones para gastos del partido, modelo de transparencia para el municipio.",
+  keywords: [
+    "la libertad avanza",
+    "politica",
+    "lobos",
+    "partido politico",
+    "transparencia",
+    "lla",
+    "libertarios",
+    "afiliacion",
+    "afiliar",
+    "contribuciones",
+    "milei",
+    "motosierra"
+  ],
   openGraph: {
     title: "La Libertad Avanza Lobos",
     description:
