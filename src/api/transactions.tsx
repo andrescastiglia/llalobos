@@ -71,6 +71,20 @@ function description(transactionType: TransactionType): string {
   }
 }
 
+function payer_name(name: string | null): string {
+  if (name === null) {
+    return "Anonimo";
+  }
+  const words = name.toLowerCase().split(" ");
+  return words.map((word) => {
+      if (word.length === 0) {
+        return "";
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
+
 async function fetchTransactions(): Promise<Journal[]> {
   const timestamp = Date.now();
   const response = await fetch(`${baseUrl}/api/transactions?t=${timestamp}`);
@@ -78,7 +92,7 @@ async function fetchTransactions(): Promise<Journal[]> {
   const body: Response = await response.json();
   return body.data.map((row) => ({
     id: row.source_id,
-    source: row.payer_name,
+    source: payer_name(row.payer_name),
     date: row.transaction_date,
     amount: row.transaction_amount * direction(row.transaction_type),
     description: description(row.transaction_type),
