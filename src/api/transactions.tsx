@@ -72,7 +72,8 @@ function description(transactionType: TransactionType): string {
 }
 
 async function fetchTransactions(): Promise<Journal[]> {
-  const response = await fetch(`${baseUrl}/api/transactions`);
+  const timestamp = Date.now();
+  const response = await fetch(`${baseUrl}/api/transactions?t=${timestamp}`);
   if (!response.ok) throw new Error("Error fetching transactions");
   const body: Response = await response.json();
   return body.data.map((row) => ({

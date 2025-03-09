@@ -6,7 +6,8 @@ export interface Goal {
 }
 
 export async function goal(): Promise<Goal> {
-  const response = await fetch(`${baseUrl}/api/goal`);
+  const timestamp = Date.now();
+  const response = await fetch(`${baseUrl}/api/goal?t=${timestamp}`);
   if (!response.ok) throw new Error("Error fetching transactions");
   return response.json();
 }
