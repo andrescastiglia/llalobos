@@ -1,5 +1,6 @@
 import { Journal } from "@/api/transactions";
 import React from "react";
+import nextConfig from "../../next.config";
 
 interface LedgerPageProps {
   ledger: Journal[];
@@ -19,19 +20,19 @@ export const Ledger: React.FC<LedgerPageProps> = ({ ledger }) => {
 
     {ledger.map((journal) => (
       <div key={journal.id} className="grid grid-cols-2 sm:grid-cols-4 items-center pb-1 text-sm break-words">
-        <div className="hidden sm:block px-2 py-1">{journal.date.toLocaleString()}</div>
+        <div className="hidden sm:block px-2 py-1">{new Date(journal.date).toLocaleDateString(nextConfig.i18n?.defaultLocale)}</div>
         <div className="px-2 py-1 truncate">{journal.description} {journal.source}</div>
         <div className="hidden sm:block px-2 py-1 text-right text-blue-700">
-          {journal.amount >= 0 ? journal.amount.toLocaleString() : ""}
+          {journal.amount >= 0 ? journal.amount.toLocaleString(nextConfig.i18n?.defaultLocale) : ""}
         </div>
         <div className="hidden sm:block px-2 py-1 text-right text-red-700">
-          {journal.amount < 0 ? Math.abs(journal.amount).toLocaleString() : ""}
+          {journal.amount < 0 ? Math.abs(journal.amount).toLocaleString(nextConfig.i18n?.defaultLocale) : ""}
         </div>
         <div className="sm:hidden px-2 py-1 text-right">
           {journal.amount >= 0 ? (
-            <span className="text-blue-700">{journal.amount.toLocaleString()}</span>
+            <span className="text-blue-700">{journal.amount.toLocaleString(nextConfig.i18n?.defaultLocale)}</span>
           ) : (
-            <span className="text-red-700">{Math.abs(journal.amount).toLocaleString()}</span>
+            <span className="text-red-700">{Math.abs(journal.amount).toLocaleString(nextConfig.i18n?.defaultLocale)}</span>
           )}
         </div>
       </div>

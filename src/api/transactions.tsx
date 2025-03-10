@@ -76,7 +76,8 @@ function payer_name(name: string | null): string {
     return "Anonimo";
   }
   const words = name.toLowerCase().split(" ");
-  return words.map((word) => {
+  return words
+    .map((word) => {
       if (word.length === 0) {
         return "";
       }

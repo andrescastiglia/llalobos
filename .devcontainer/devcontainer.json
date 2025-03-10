@@ -1,6 +1,6 @@
 {
   "name": "LLALOBOS-FRONTEND",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -12,6 +12,6 @@
       ]
     }
   },
-  "postCreateCommand": "npm install",
+  "postCreateCommand": "npm install -g npm@latest && npm install",
   "remoteUser": "node"
 }

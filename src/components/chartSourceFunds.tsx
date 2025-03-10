@@ -3,6 +3,7 @@
 import { SourceFunds } from "@/api/funds";
 import React from "react";
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Label } from "recharts";
+import nextConfig from "../../next.config";
 
 interface SourceFundsPageProps {
   sourceFunds: SourceFunds[];
@@ -32,7 +33,7 @@ export const ChartSourceFunds: React.FC<SourceFundsPageProps> = ({
         >
           <Label value="Origen" position="bottom" dx={0} dy={100} />
         </Pie>
-        <Tooltip formatter={(value: number) => value.toLocaleString()} />
+        <Tooltip formatter={(value: number) => value.toLocaleString(nextConfig.i18n?.defaultLocale)} />
       </PieChart>
     </ResponsiveContainer>
   );

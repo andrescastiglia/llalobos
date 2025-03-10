@@ -1,11 +1,8 @@
 import type { NextConfig } from "next";
+import { i18n } from "./next-i18next.config";
 
 const nextConfig: NextConfig = {
-  i18n: {
-    locales: ['es', 'en'],
-    defaultLocale: 'es',
-    localeDetection: false,
-  },  
+  i18n
 };
 
 export default nextConfig;
