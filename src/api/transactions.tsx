@@ -86,9 +86,9 @@ function payer_name(name: string | null): string {
     .join(" ");
 }
 
-async function fetchTransactions(): Promise<Journal[]> {
+async function fetchTransactions(page: number, page_size: number): Promise<Journal[]> {
   const timestamp = Date.now();
-  const response = await fetch(`${baseUrl}/api/transactions?t=${timestamp}`);
+  const response = await fetch(`${baseUrl}/api/transactions?page=${page}&page_size=${page_size}&t=${timestamp}`);
   if (!response.ok) throw new Error("Error fetching transactions");
   const body: Response = await response.json();
   return body.data.map((row) => ({
@@ -100,10 +100,10 @@ async function fetchTransactions(): Promise<Journal[]> {
   }));
 }
 
-export default async function transactions(): Promise<Journal[]> {
+export default async function transactions(page: number, page_size: number): Promise<Journal[]> {
   let ledger: Journal[] = [];
   try {
-    ledger = await fetchTransactions();
+    ledger = await fetchTransactions(page, page_size);
   } catch (error) {
     console.error("Failed fetching transactions:", error);
   }
