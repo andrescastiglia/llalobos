@@ -27,7 +27,7 @@ export default function Main() {
   useEffect(() => {
     const fetch = async () => {
       setLedger(await transactions(currentPage, pageSize));
-    }
+    };
     fetch();
   }, [currentPage]);
 
@@ -51,13 +51,14 @@ export default function Main() {
       </div>
       <div className="col-span-1 md:col-span-2">
         <Ledger ledger={ledger} />
-
         <div className="flex justify-center space-x-4 mt-4">
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>
             &lt;-
           </button>
           <span>{currentPage}</span>
-          <button onClick={handleNextPage}>-&gt;</button>
+          <button onClick={handleNextPage} disabled={ledger.length === 0}>
+            -&gt;
+          </button>
         </div>
       </div>
     </main>
