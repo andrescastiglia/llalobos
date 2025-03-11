@@ -4,7 +4,7 @@ import transactions, { Journal } from "@/api/transactions";
 import { Ledger } from "@/components/ledger";
 import { ChartSourceFunds } from "@/components/chartSourceFunds";
 import { ChartTarget } from "@/components/chartTarget";
-import { groupBySource, SourceFunds } from "@/api/funds";
+import { funds, SourceFunds } from "@/api/funds";
 import { goal, Goal } from "@/api/goals";
 import { useEffect, useState } from "react";
 
@@ -18,14 +18,14 @@ export default function Main() {
 
   useEffect(() => {
     const load = async () => {
-      setSourceFunds(await groupBySource());
+      setSourceFunds(await funds());
       setGoals(await goal());
     };
     load();
   }, []);
 
   useEffect(() => {
-    async function fetch() {
+    const fetch = async () => {
       setLedger(await transactions(currentPage, pageSize));
     }
     fetch();
@@ -41,8 +41,6 @@ export default function Main() {
     setCurrentPage(currentPage + 1);
   };
 
-  if (!goals) return <div>...</div>;
-
   return (
     <main className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
       <div className="flex justify-center">
@@ -55,9 +53,11 @@ export default function Main() {
         <Ledger ledger={ledger} />
 
         <div className="flex justify-center space-x-4 mt-4">
-          <button onClick={handlePreviousPage} disabled={currentPage === 1} >&lt;-</button>
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            &lt;-
+          </button>
           <span>{currentPage}</span>
-          <button onClick={handleNextPage} >-&gt;</button>
+          <button onClick={handleNextPage}>-&gt;</button>
         </div>
       </div>
     </main>

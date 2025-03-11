@@ -4,6 +4,7 @@ import { SourceFunds } from "@/api/funds";
 import React from "react";
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Label } from "recharts";
 import nextConfig from "../../next.config";
+import { fix_name } from "@/api/const";
 
 interface SourceFundsPageProps {
   sourceFunds: SourceFunds[];
@@ -12,6 +13,8 @@ interface SourceFundsPageProps {
 export const ChartSourceFunds: React.FC<SourceFundsPageProps> = ({
   sourceFunds,
 }) => {
+  if (sourceFunds.length < 1) return <div></div>;
+
   const cx = 200;
   const cy = 150;
   const iR = 50;
@@ -29,11 +32,15 @@ export const ChartSourceFunds: React.FC<SourceFundsPageProps> = ({
           cy={cy}
           innerRadius={iR}
           outerRadius={oR}
-          label={({ name }) => `${name}`}
+          label={({ name }) => `${fix_name(name)}`}
         >
           <Label value="Origen" position="bottom" dx={0} dy={100} />
         </Pie>
-        <Tooltip formatter={(value: number) => value.toLocaleString(nextConfig.i18n?.defaultLocale)} />
+        <Tooltip
+          formatter={(value: number) =>
+            value.toLocaleString(nextConfig.i18n?.defaultLocale)
+          }
+        />
       </PieChart>
     </ResponsiveContainer>
   );

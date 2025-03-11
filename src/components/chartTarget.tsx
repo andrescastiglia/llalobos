@@ -5,10 +5,12 @@ import React from "react";
 import { PieChart, Pie, ResponsiveContainer, Cell, Label } from "recharts";
 
 interface GoalPageProps {
-  goal: Goal;
+  goal: Goal | null;
 }
 
 export const ChartTarget: React.FC<GoalPageProps> = ({ goal }) => {
+  if (!goal) return <div></div>;
+
   const cx = 200;
   const cy = 150;
   const iR = 50;

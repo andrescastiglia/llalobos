@@ -1,4 +1,4 @@
-import { baseUrl } from "./const";
+import { baseUrl, fix_name } from "./const";
 
 export interface Journal {
   id: string;
@@ -71,21 +71,6 @@ function description(transactionType: TransactionType): string {
   }
 }
 
-function payer_name(name: string | null): string {
-  if (name === null) {
-    return "Anonimo";
-  }
-  const words = name.toLowerCase().split(" ");
-  return words
-    .map((word) => {
-      if (word.length === 0) {
-        return "";
-      }
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(" ");
-}
-
 async function fetchTransactions(page: number, page_size: number): Promise<Journal[]> {
   const timestamp = Date.now();
   const response = await fetch(`${baseUrl}/api/transactions?page=${page}&page_size=${page_size}&t=${timestamp}`);
@@ -93,7 +78,7 @@ async function fetchTransactions(page: number, page_size: number): Promise<Journ
   const body: Response = await response.json();
   return body.data.map((row) => ({
     id: row.source_id,
-    source: payer_name(row.payer_name),
+    source: fix_name(row.payer_name),
     date: row.transaction_date,
     amount: row.transaction_amount * direction(row.transaction_type),
     description: description(row.transaction_type),

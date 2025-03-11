@@ -8,6 +8,6 @@ export interface Goal {
 export async function goal(): Promise<Goal> {
   const timestamp = Date.now();
   const response = await fetch(`${baseUrl}/api/goal?t=${timestamp}`);
-  if (!response.ok) throw new Error("Error fetching transactions");
+  if (!response.ok) throw new Error("Error fetching goal");
   return response.json();
 }
