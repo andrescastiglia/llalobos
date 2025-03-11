@@ -41,3 +41,4 @@ package-lock.json
 yarn.lock
 
 sitemap*.xml
+robots.txt
