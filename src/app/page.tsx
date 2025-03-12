@@ -3,12 +3,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
-import Main from "./main";
-import Project from "./project";
+import Balance from "./balance";
+import News from "./news";
 import Contact from "./contact";
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState("main");
+  const [currentPage, setCurrentPage] = useState("news");
   const [menuOpen, setMenuOpen] = useState(false);
   const navbar = useRef<HTMLDivElement>(null);
 
@@ -38,36 +38,39 @@ export default function Home() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case "main":
-        return <Main />;
-      case "project":
-        return <Project />;
+      case "news":
+        return <News />;
+      case "balance":
+        return <Balance />;
       case "contact":
         return <Contact />;
       default:
-        return <Main />;
+        return <News />;
     }
   };
 
   return (
     <>
-      <nav ref={navbar} className={`navbar${menuOpen ? " responsive" : ""}`}>
-        <a href="#main" onClick={() => handlePageChange("main")}>
-          🏠 Principal
-        </a>
-        <a href="#project" onClick={() => handlePageChange("project")}>
-          📁 Proyectos
-        </a>
-        <a href="#contact" onClick={() => handlePageChange("contact")}>
-          👤 Contactos
-        </a>
-        <a href="#toggle" className="icon" onClick={toggleMenu}>
-          &#9776;
-        </a>
-      </nav>
-      <div className="grid grid-rows-[auto_1fr_10px] items-center justify-items-center min-h-screen p-4 pb-20 gap-4 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+      <div className="font-[family-name:var(--font-geist-sans)]">
+        <nav ref={navbar} className={`navbar${menuOpen ? " responsive" : ""}`}>
+          <a href="#news" onClick={() => handlePageChange("news")}>
+            🏠 Noticias
+          </a>
+          <a href="#balance" onClick={() => handlePageChange("balance")}>
+            📁 Balance
+          </a>
+          <a href="#contact" onClick={() => handlePageChange("contact")}>
+            👤 Contactos
+          </a>
+          <a href="#toggle" className="icon" onClick={toggleMenu}>
+            &#9776;
+          </a>
+        </nav>
+      </div>
+      <div className="grid grid-rows-[auto_1fr_5px] items-center justify-items-center min-h-screen p-1 pb-5 gap-4 sm:p-5 font-[family-name:var(--font-geist-sans)]">
         <Header />
         {renderPage()}
+        &nbsp;
         <Footer />
       </div>
     </>

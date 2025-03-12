@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const pageSize = 10;
 
-export default function Main() {
+export default function Balance() {
   const [sourceFunds, setSourceFunds] = useState<SourceFunds[]>([]);
   const [goals, setGoals] = useState<Goal | null>(null);
   const [ledger, setLedger] = useState<Journal[]>([]);
@@ -49,7 +49,7 @@ export default function Main() {
       <div className="flex justify-center">
         <ChartSourceFunds sourceFunds={sourceFunds} />
       </div>
-      <div className="col-span-1 md:col-span-2">
+      <div className="col-span-1 md:col-span-2 rounded-2xl shadow-lg ">
         <Ledger ledger={ledger} />
         <div className="flex justify-center space-x-4 mt-4">
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>

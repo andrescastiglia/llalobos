@@ -9,13 +9,13 @@ module.exports = {
   alternateRefs: [],
   additionalPaths: async (config) => [
     {
-      loc: `${config.siteUrl}/#main`,
+      loc: `${config.siteUrl}/#news`,
       changefreq: "daily",
       priority: 1,
     },
     {
-      loc: `${config.siteUrl}/#project`,
-      changefreq: "weekly",
+      loc: `${config.siteUrl}/#balance`,
+      changefreq: "daily",
       priority: 0.7,
     },
     {

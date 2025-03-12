@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --color-background: var(--background);
@@ -49,27 +49,29 @@ body {
 .navbar a {
   float: left;
   display: block;
-  color: #f2f2f2;
   text-align: center;
   padding: 5px 10px;
   text-decoration: none;
 }
 .navbar a:hover {
-  background-color: #ddd;
   color: black;
 }
 .navbar .icon {
   display: none;
 }
 @media screen and (max-width: 600px) {
-  .navbar a:not(:first-child) {display: none;}
+  .navbar a:not(:first-child) {
+    display: none;
+  }
   .navbar a.icon {
     float: right;
     display: block;
   }
 }
 @media screen and (max-width: 600px) {
-  .navbar.responsive {position: relative;}
+  .navbar.responsive {
+    position: relative;
+  }
   .navbar.responsive .icon {
     position: absolute;
     right: 0;
