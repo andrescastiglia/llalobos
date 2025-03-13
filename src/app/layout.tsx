@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "afiliar",
     "contribuciones",
     "milei",
-    "motosierra"
+    "motosierra",
   ],
   openGraph: {
     title: "La Libertad Avanza Lobos",
@@ -61,6 +61,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>La Libertad Avanza - Lobos</title>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Feed RSS de La Libertad Avanza Lobos"
+          href="https://lalibertadavanzalobos.ar/rss"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
