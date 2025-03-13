@@ -5,9 +5,7 @@ export default function header() {
         La Libertad Avanza <span className="text-sm">Lobos</span>
       </h1>
       <p className="text-center sm:text-left">
-        El propósito del sitio es usar las contribuciones para mantener los
-        gastos básicos del partido, ofreciendo la transparencia que quisiéramos
-        implementar en el municipio.
+        El propósito del sitio es mostrar el modelo de transparencia que queremos implementar en el municipio.
       </p>
       <script type="application/ld+json">
         {`
@@ -16,7 +14,7 @@ export default function header() {
             "@type": "PoliticalParty",
             "name": "La Libertad Avanza Lobos",
             "alternateName": "LLA Lobos",
-            "description": "Contribuciones para gastos del partido, modelo de transparencia para el municipio.",
+            "description": "El propósito del sitio es mostrar el modelo de transparencia que queremos implementar en el municipio.",
             "url": "https://lalibertadavanzalobos.ar",
             "logo": "https://lalibertadavanzalobos.ar/logo.png",
             "email": "contribucion@lalibertadavanzalobos.ar",

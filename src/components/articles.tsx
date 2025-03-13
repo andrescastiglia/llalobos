@@ -14,8 +14,40 @@ export const Articles: React.FC<ArticlesPageProps> = ({ articles: news }) => {
     setExpanded(expanded === id ? null : id);
   };
 
+  const schemaOrg = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: news.map((item, index) => ({
+      "@type": "NewsArticle",
+      position: index + 1,
+      headline: item.title,
+      datePublished: new Date(item.date).toISOString().substring(0, 10),
+      author: {
+        "@type": "Person",
+        name: "Andres Castiglia",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "La Libertad Avanza Lobos",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://lalibertadavanzalobos.ar/publisher.png",
+        },
+      },
+      image: "https://lalibertadavanzalobos.ar/article.png",
+      articleBody: item.content,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://lalibertadavanzalobos.ar/#news",
+      },
+      description: "Politica de Lobos, Provincia de Buenos Aires",
+      keywords: "politica,lobos,noticia",
+    })),
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-1 relative">
+      <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
       {news.map((article) => (
         <div key={article.id} className="rounded-2xl shadow-lg p-4">
           <h2 className="text-xl font-bold mb-2">{article.title}</h2>
