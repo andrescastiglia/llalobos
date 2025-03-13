@@ -1,6 +1,6 @@
 "use client";
 
-import { Goal } from "@/api/goals";
+import { Goal } from "@/app/ui/goals";
 import React from "react";
 import { PieChart, Pie, ResponsiveContainer, Cell, Label } from "recharts";
 

@@ -1,4 +1,4 @@
-import { baseUrl, fix_name } from "./const";
+import { baseUrl, fix_name } from "@/app/ui/const";
 
 export interface Journal {
   id: string;

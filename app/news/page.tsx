@@ -1,19 +1,28 @@
-import news, { Article } from "@/api/news";
+"use client";
+
+import news, { Article } from "@/app/ui/news";
 import { Articles } from "@/components/articles";
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-const pageSize = 10;
+export default function Page() {
+  const pageSize = 10;
+  const searchParams = useSearchParams();
+  const id = searchParams?.get("id"); 
 
-export default function News() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetch = async () => {
-      setArticles(await news({ page: currentPage, page_size: pageSize }));
+      if (id) {
+        setArticles(await news({ id: Number(id) }));
+      } else {
+        setArticles(await news({ page: currentPage, page_size: pageSize }));
+      }
     };
     fetch();
-  }, [currentPage]);
+  }, [currentPage, id]);
 
   const handlePreviousPage = async () => {
     if (currentPage > 1) {

@@ -1,11 +1,11 @@
-import news from "../../api/news";
+import news from "@/app/ui/news";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+  request: NextApiRequest,
+  response: NextApiResponse
 ) {
-  const { page = "1", page_size = "10" } = req.query;
+  const { page = "1", page_size = "10" } = request.query;
   const articles = await news({
     page: Number(page),
     page_size: Number(page_size),
@@ -24,8 +24,8 @@ export default async function handler(
           (item) => `
         <item>
           <title>${item.title}</title>
-          <link>https://lalibertadavanzalobos.ar/#news</link>
-          <guid>${item.id}</guid>
+          <link>https://lalibertadavanzalobos.ar/news?id=${item.id}</link>
+          <guid>https://lalibertadavanzalobos.ar/news?id=${item.id}</guid>
           <description><![CDATA[${item.content}]]></description>
           <category>Política</category>
           <pubDate>${new Date(item.date).toUTCString()}</pubDate>
@@ -35,6 +35,6 @@ export default async function handler(
     </channel>
   </rss>`;
 
-  res.setHeader("Content-Type", "application/xml");
-  res.status(200).send(rss);
+  response.setHeader("Content-Type", "application/xml");
+  response.status(200).send(rss);
 }

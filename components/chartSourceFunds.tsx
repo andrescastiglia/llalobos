@@ -1,10 +1,10 @@
 "use client";
 
-import { SourceFunds } from "@/api/funds";
+import { SourceFunds } from "@/app/ui/funds";
 import React from "react";
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Label } from "recharts";
-import nextConfig from "../../next.config";
-import { fix_name } from "@/api/const";
+import nextConfig from "@/base/next.config";
+import { fix_name } from "@/app/ui/const";
 
 interface SourceFundsPageProps {
   sourceFunds: SourceFunds[];

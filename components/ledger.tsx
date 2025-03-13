@@ -1,6 +1,6 @@
-import { Journal } from "@/api/transactions";
+import { Journal } from "@/app/ui/transactions";
 import React from "react";
-import nextConfig from "../../next.config";
+import nextConfig from "@/base/next.config";
 
 interface LedgerPageProps {
   ledger: Journal[];

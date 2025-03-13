@@ -1,4 +1,6 @@
-import news, { Article } from "@/api/news";
+"use client";
+
+import news, { Article } from "@/app/ui/news";
 import React, { useEffect, useRef, useState } from "react";
 
 interface ArticlePageProps {

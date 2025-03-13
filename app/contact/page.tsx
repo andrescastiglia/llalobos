@@ -1,9 +1,10 @@
+"use client";
+
 import React from "react";
 
-export default function Contact() {
+export default function Page() {
   return (
     <div>
-      <h2>Contactos</h2>
       <p>Proximamente.</p>
     </div>
   );

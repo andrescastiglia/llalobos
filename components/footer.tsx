@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function footer() {
+export const Footer = () => {
   return (
     <footer className="flex gap-4 flex-wrap items-center justify-center">
       <a
@@ -19,7 +19,7 @@ export default function footer() {
         Github Project →
       </a>
 
-       <a
+      <a
         className="flex items-center gap-2 hover:underline hover:underline-offset-2"
         href="https://www.instagram.com/lalibertadavanzalobos/"
         target="_blank"
@@ -41,14 +41,8 @@ export default function footer() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image
-          aria-hidden
-          src="/x.svg"
-          alt="X"
-          width={16}
-          height={16}
-        />
-        X (Twitter) →
+        <Image aria-hidden src="/x.svg" alt="X" width={16} height={16} />X
+        (Twitter) →
       </a>
 
       <a
@@ -66,7 +60,6 @@ export default function footer() {
         />
         Facebook →
       </a>
-
     </footer>
   );
-}
+};

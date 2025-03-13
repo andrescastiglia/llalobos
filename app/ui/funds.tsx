@@ -1,4 +1,4 @@
-import { baseUrl } from "./const";
+import { baseUrl } from "@/app/ui/const";
 
 export interface SourceFunds {
   name: string;

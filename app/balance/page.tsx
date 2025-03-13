@@ -1,16 +1,16 @@
 "use client";
 
-import transactions, { Journal } from "@/api/transactions";
+import transactions, { Journal } from "@/app/ui/transactions";
 import { Ledger } from "@/components/ledger";
 import { ChartSourceFunds } from "@/components/chartSourceFunds";
 import { ChartTarget } from "@/components/chartTarget";
-import { funds, SourceFunds } from "@/api/funds";
-import { goal, Goal } from "@/api/goals";
+import { funds, SourceFunds } from "@/app/ui/funds";
+import { goal, Goal } from "@/app/ui/goals";
 import { useEffect, useState } from "react";
 
-const pageSize = 10;
+export default function Page() {
+  const pageSize = 10;
 
-export default function Balance() {
   const [sourceFunds, setSourceFunds] = useState<SourceFunds[]>([]);
   const [goals, setGoals] = useState<Goal | null>(null);
   const [ledger, setLedger] = useState<Journal[]>([]);

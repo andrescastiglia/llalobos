@@ -1,7 +1,7 @@
-import { Article } from "@/api/news";
+import { Article } from "@/app/ui/news";
 import { Audio } from "@/components/audio";
 import React, { useState } from "react";
-import nextConfig from "../../next.config";
+import nextConfig from "@/base/next.config";
 
 interface ArticlesPageProps {
   articles: Article[];
@@ -38,7 +38,7 @@ export const Articles: React.FC<ArticlesPageProps> = ({ articles: news }) => {
       articleBody: item.content,
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://lalibertadavanzalobos.ar/#news",
+        "@id": `https://lalibertadavanzalobos.ar/news?id=${item.id}`,
       },
       description: "Politica de Lobos, Provincia de Buenos Aires",
       keywords: "politica,lobos,noticia",

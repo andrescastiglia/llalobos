@@ -6,11 +6,11 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/rss',
-        destination: '/api/rss'
-      }
+        source: "/rss",
+        destination: "/api/rss",
+      },
     ];
-  }  
+  },
 };
 
 export default nextConfig;

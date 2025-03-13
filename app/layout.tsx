@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
+import { Navigator } from "@/components/navigator";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Suspense } from "react";
+import { Loading } from "@/components/loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <title>La Libertad Avanza - Lobos</title>
         <link
@@ -73,7 +78,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Navigator />
+        <div className="grid grid-rows-[auto_1fr_5px] items-center justify-items-center min-h-screen p-1 pb-5 gap-4 sm:p-5 font-[family-name:var(--font-geist-sans)]">
+          <Header />
+          <Suspense fallback={<Loading />}>{children}</Suspense>
+          &nbsp;
+          <Footer />
+        </div>
       </body>
     </html>
   );

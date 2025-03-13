@@ -9,17 +9,17 @@ module.exports = {
   alternateRefs: [],
   additionalPaths: async (config) => [
     {
-      loc: `${config.siteUrl}/#news`,
+      loc: `${config.siteUrl}/news`,
       changefreq: "daily",
       priority: 1,
     },
     {
-      loc: `${config.siteUrl}/#balance`,
+      loc: `${config.siteUrl}/balance`,
       changefreq: "daily",
       priority: 0.7,
     },
     {
-      loc: `${config.siteUrl}/#contact`,
+      loc: `${config.siteUrl}/contact`,
       changefreq: "monthly",
       priority: 0.5,
     },

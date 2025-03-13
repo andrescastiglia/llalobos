@@ -1,4 +1,6 @@
-import { baseUrl } from "./const";
+"use client";
+
+import { baseUrl } from "@/app/ui/const";
 
 export interface NewsOptions {
   id?: number;
