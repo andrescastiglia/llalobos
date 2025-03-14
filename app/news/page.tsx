@@ -4,11 +4,12 @@ import news, { Article } from "@/app/ui/news";
 import { Articles } from "@/components/articles";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function Page() {
   const pageSize = 10;
   const searchParams = useSearchParams();
-  const id = searchParams?.get("id"); 
+  const id = searchParams?.get("id");
 
   const [articles, setArticles] = useState<Article[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,11 +41,11 @@ export default function Page() {
         <Articles articles={articles} />
         <div className="flex justify-center space-x-5 mt-1">
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-            &lt;-
+            <FaArrowLeft />
           </button>
           <span>{currentPage}</span>
           <button onClick={handleNextPage} disabled={articles.length === 0}>
-            -&gt;
+            <FaArrowRight />
           </button>
         </div>
       </div>

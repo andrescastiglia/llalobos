@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { FaGithub, FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
 
 export const Footer = () => {
   return (
@@ -9,56 +9,34 @@ export const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image
-          aria-hidden
-          src="/github.svg"
-          alt="Github"
-          width={16}
-          height={16}
-        />
-        Github Project →
+        <FaGithub /> Github
       </a>
-
+      |
       <a
         className="flex items-center gap-2 hover:underline hover:underline-offset-2"
         href="https://www.instagram.com/lalibertadavanzalobos/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image
-          aria-hidden
-          src="/instagram.svg"
-          alt="Instagram"
-          width={16}
-          height={16}
-        />
-        Instagram →
+        <FaInstagram /> Instagram
       </a>
-
+      |
       <a
         className="flex items-center gap-2 hover:underline hover:underline-offset-2"
         href="https://x.com/lla_lobos"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image aria-hidden src="/x.svg" alt="X" width={16} height={16} />X
-        (Twitter) →
+        <FaTwitter /> X
       </a>
-
+      |
       <a
         className="flex items-center gap-2 hover:underline hover:underline-offset-2"
         href="https://www.facebook.com/profile.php?id=100094606170430"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image
-          aria-hidden
-          src="/facebook.svg"
-          alt="Facebook"
-          width={16}
-          height={16}
-        />
-        Facebook →
+        <FaFacebook /> Facebook
       </a>
     </footer>
   );

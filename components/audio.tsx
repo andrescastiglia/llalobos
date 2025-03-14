@@ -2,6 +2,7 @@
 
 import news, { Article } from "@/app/ui/news";
 import React, { useEffect, useRef, useState } from "react";
+import { FaPause, FaPlay } from "react-icons/fa";
 
 interface ArticlePageProps {
   article: Article;
@@ -80,9 +81,9 @@ export const Audio: React.FC<ArticlePageProps> = ({ article }) => {
           {audioSrc && <audio ref={audioRef} src={audioSrc} controls={false} />}
           <button
             onClick={togglePlayback}
-            className="mr-2 px-2 py-1 bg-blue-500 text-white rounded"
+            className="mr-2 px-2 py-1 rounded"
           >
-            {isPlaying ? "❚❚" : "▶"}
+            {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
           <input
             type="range"

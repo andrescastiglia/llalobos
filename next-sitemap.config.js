@@ -3,7 +3,7 @@ module.exports = {
   siteUrl: process.env.SITE_URL || "https://lalibertadavanzalobos.ar",
   generateRobotsTxt: true,
   sitemapSize: 7000,
-  changefreq: "daily",
+  changefreq: "weekly",
   priority: 1,
   exclude: [],
   alternateRefs: [],
@@ -19,8 +19,13 @@ module.exports = {
       priority: 0.7,
     },
     {
+      loc: `${config.siteUrl}/doc`,
+      changefreq: "never",
+      priority: 0.5,
+    },    
+    {
       loc: `${config.siteUrl}/contact`,
-      changefreq: "monthly",
+      changefreq: "never",
       priority: 0.5,
     },
   ],

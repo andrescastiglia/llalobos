@@ -4,7 +4,8 @@
   "private": true,
   "author": {
     "name": "Andres Castiglia",
-    "email": "acastiglia@gmail.com"
+    "email": "acastiglia@gmail.com",
+    "url": "https://lalibertadavanzalobos.ar"
   },
   "scripts": {
     "dev": "next dev --turbopack",
@@ -14,13 +15,14 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "i18next": "^24.2.2",
-    "next": "^15.2.1",
+    "i18next": "^24.2.3",
+    "next": "^15.2.2",
     "next-i18next": "^15.4.2",
     "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",
+    "react-icons": "^5.5.0",
     "recharts": "^2.15.1"
   },
   "devDependencies": {
@@ -32,7 +34,7 @@
     "eslint": "^9.22.0",
     "eslint-config-next": "^15.2.1",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.0.12",
+    "tailwindcss": "^4.0.14",
     "typescript": "^5.8.2"
   }
 }

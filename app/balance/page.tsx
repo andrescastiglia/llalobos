@@ -7,6 +7,7 @@ import { ChartTarget } from "@/components/chartTarget";
 import { funds, SourceFunds } from "@/app/ui/funds";
 import { goal, Goal } from "@/app/ui/goals";
 import { useEffect, useState } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function Page() {
   const pageSize = 10;
@@ -53,11 +54,11 @@ export default function Page() {
         <Ledger ledger={ledger} />
         <div className="flex justify-center space-x-4 mt-4">
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-            &lt;-
+            <FaArrowLeft />
           </button>
           <span>{currentPage}</span>
           <button onClick={handleNextPage} disabled={ledger.length === 0}>
-            -&gt;
+            <FaArrowRight />
           </button>
         </div>
       </div>

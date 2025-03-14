@@ -2,6 +2,7 @@ import { Article } from "@/app/ui/news";
 import { Audio } from "@/components/audio";
 import React, { useState } from "react";
 import nextConfig from "@/base/next.config";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 interface ArticlesPageProps {
   articles: Article[];
@@ -59,13 +60,13 @@ export const Articles: React.FC<ArticlesPageProps> = ({ articles: news }) => {
           <p className="whitespace-pre-line">
             {expanded === article.id
               ? article.content
-              : `${article.content.slice(0, 250)} `}
+              : `${article.content.slice(0, 250)} [..]`}
             {expanded !== article.id && (
               <span
                 onClick={() => toggleExpand(article.id)}
-                className="text-blue-500 hover:underline cursor-pointer"
+                className="hover:underline cursor-pointer"
               >
-                [+]
+                <FaPlus />
               </span>
             )}
           </p>
@@ -73,9 +74,9 @@ export const Articles: React.FC<ArticlesPageProps> = ({ articles: news }) => {
             <div className="flex justify-between mt-4">
               <span
                 onClick={() => toggleExpand(article.id)}
-                className="text-blue-500 hover:underline cursor-pointer"
+                className="hover:underline cursor-pointer"
               >
-                [-]
+                <FaMinus />
               </span>
             </div>
           )}
