@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "La Libertad Avanza Lobos",
   description:
-    "Contribuciones para gastos del partido, modelo de transparencia para el municipio.",
+    "En este espacio, la libertad se encuentra con la transparencia. Creemos en el acceso sin restricciones a la información, donde cada dato es un paso hacia la autonomía individual.",
   keywords: [
     "la libertad avanza",
     "politica",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "La Libertad Avanza Lobos",
     description:
-      "Contribuciones para gastos del partido, modelo de transparencia para el municipio.",
+      "En este espacio, la libertad se encuentra con la transparencia. Creemos en el acceso sin restricciones a la información, donde cada dato es un paso hacia la autonomía individual.",
     url: "https://lalibertadavanzalobos.ar",
     type: "website",
     images: [
@@ -67,7 +67,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <title>La Libertad Avanza - Lobos</title>
         <link
           rel="alternate"
           type="application/rss+xml"
