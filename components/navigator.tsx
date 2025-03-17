@@ -21,7 +21,6 @@ export const Navigator = () => {
   };
 
   return (
-    <div className="font-[family-name:var(--font-geist-sans)]">
       <nav className={`navbar${menuOpen ? " responsive" : ""}`}>
         <Link href="/news" onClick={closeMenu}>
           <span className="flex items-center">
@@ -51,6 +50,5 @@ export const Navigator = () => {
           &#9776;
         </a>
       </nav>
-    </div>
   );
 };

@@ -105,7 +105,7 @@ export const Audio: React.FC<ArticlePageProps> = ({ article }) => {
           <p
             id={`segment-${segment.start}`}
             key={segment.start}
-            className="p-2 rounded bg-gray-100 dark:bg-gray-800 text-center text-sm sm:text-base md:text-lg"
+            className="p-2 rounded inverted-color text-center text-sm sm:text-base md:text-lg"
           >
             {segment.content}
           </p>

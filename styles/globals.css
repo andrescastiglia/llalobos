@@ -19,19 +19,31 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--quaternary-color, currentColor);
   }
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #4b0082;
+  --primary-color: #8a2be2;
+  --secondary-color: #ff00ff;
+  --tertiary-color: #ff69b4;
+  --quaternary-color: #87ceeb;
+  --quinary-color: #ffa500;
+  --senary-color: #ffd700;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #4b0082;
     --foreground: #ededed;
+    --primary-color: #8a2be2;
+    --secondary-color: #ff00ff;
+    --tertiary-color: #ff69b4;
+    --quaternary-color: #87ceeb;
+    --quinary-color: #ffa500;
+    --senary-color: #ffd700;
   }
 }
 
@@ -41,11 +53,31 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.primary-color {
+  color: var(--primary-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.inverted-color {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
 /* Styles for the responsive menu */
 .navbar {
-  overflow: hidden;
-  border-bottom: 1px solid #ddd;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--foreground);
+  color: var(--background);
+  text-align: center;
+  padding: 0;
+  z-index: 1000;
 }
+
 .navbar a {
   float: left;
   display: block;
@@ -54,7 +86,7 @@ body {
   text-decoration: none;
 }
 .navbar a:hover {
-  color: black;
+  color: var(--background);
 }
 .navbar .icon {
   display: none;
@@ -70,7 +102,9 @@ body {
 }
 @media screen and (max-width: 600px) {
   .navbar.responsive {
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
   .navbar.responsive .icon {
     position: absolute;
@@ -82,4 +116,14 @@ body {
     display: block;
     text-align: left;
   }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--foreground);
+  color: var(--background);
+  text-align: center;
+  padding: 5px 0;
 }

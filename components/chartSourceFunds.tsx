@@ -2,8 +2,7 @@
 
 import { SourceFunds } from "@/app/ui/funds";
 import React from "react";
-import { PieChart, Pie, Tooltip, ResponsiveContainer, Label } from "recharts";
-import nextConfig from "@/base/next.config";
+import { PieChart, Pie, ResponsiveContainer, Label } from "recharts";
 import { fix_name } from "@/app/ui/const";
 
 interface SourceFundsPageProps {
@@ -32,15 +31,17 @@ export const ChartSourceFunds: React.FC<SourceFundsPageProps> = ({
           cy={cy}
           innerRadius={iR}
           outerRadius={oR}
+          fill="var(--foreground)"
           label={({ name }) => `${fix_name(name)}`}
         >
-          <Label value="Origen" position="bottom" dx={0} dy={100} />
+          <Label
+            value="Origen"
+            position="bottom"
+            dx={0}
+            dy={100}
+            fill="var(--foreground)"
+          />
         </Pie>
-        <Tooltip
-          formatter={(value: number) =>
-            value.toLocaleString(nextConfig.i18n?.defaultLocale)
-          }
-        />
       </PieChart>
     </ResponsiveContainer>
   );

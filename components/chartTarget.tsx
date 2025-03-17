@@ -17,12 +17,12 @@ export const ChartTarget: React.FC<GoalPageProps> = ({ goal }) => {
   const oR = 100;
   const RADIAN = Math.PI / 180;
   const data = [
-    { name: "A", value: goal.target * 0.75, color: "#b91c1c" },
-    { name: "B", value: goal.target * 0.25, color: "#ffff00" },
+    { name: "A", value: goal.target * 0.75, color: "var(--secondary-color)" },
+    { name: "B", value: goal.target * 0.25, color: "var(--quinary-color)" },
     {
       name: "C",
       value: goal.balance < goal.target ? 0 : goal.balance - goal.target,
-      color: "#00ff00",
+      color: "var(--quaternary-color)",
     },
   ];
   let total = 0;
@@ -56,27 +56,26 @@ export const ChartTarget: React.FC<GoalPageProps> = ({ goal }) => {
           cy={cy}
           innerRadius={iR}
           outerRadius={oR}
-          fill="#8884d8"
           stroke="none"
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}
-          <Label value="Objetivo" position="bottom" dx={0} dy={100} />
+          <Label value="Objetivo" position="bottom" dx={0} dy={100} fill="var(--foreground)" />
         </Pie>
         <circle
           key="circle"
           cx={x0}
           cy={y0}
           r={r}
-          fill="#1d4ed8"
+          fill="var(--primary-color)"
           stroke="none"
         />
         <path
           key="path"
           d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`}
           stroke="#none"
-          fill="#1d4ed8"
+          fill="var(--primary-color)"
         />
       </PieChart>
     </ResponsiveContainer>

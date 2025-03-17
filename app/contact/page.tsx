@@ -12,7 +12,7 @@ export default function Page() {
             href="https://afiliados.pjn.gov.ar/consulta/nueva"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline flex items-center"
+            className="hover:underline flex items-center"
           >
             <span>Registro Nacional de Afiliados</span>
             <FaExternalLinkAlt className="ml-2" />

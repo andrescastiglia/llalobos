@@ -136,7 +136,7 @@ La incorporación de tecnologías y la creación de espacios de diálogo interin
             href="https://www.argentina.gob.ar/partidos-politicos/conformacion-de-un-partido-politico"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline flex items-center"
+            className="hover:underline flex items-center"
           >
             <span>Conformacion de un Partido Politico</span>
             <FaExternalLinkAlt className="ml-2" />

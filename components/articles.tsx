@@ -52,7 +52,7 @@ export const Articles: React.FC<ArticlesPageProps> = ({ articles: news }) => {
       {news.map((article) => (
         <div key={article.id} className="rounded-2xl shadow-lg p-4">
           <h2 className="text-xl font-bold mb-2">{article.title}</h2>
-          <p className="text-sm text-gray-500 mb-2">
+          <p className="text-sm mb-2">
             {new Date(article.date).toLocaleDateString(
               nextConfig.i18n?.defaultLocale
             )}
