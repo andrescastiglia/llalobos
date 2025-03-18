@@ -6,6 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Suspense } from "react";
 import { Loading } from "@/components/loading";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,6 +68,18 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-28H16J7GJJ"
+        />
+        <Script id="google-analtycs" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-28H16J7GJJ');
+          `}
+        </Script>
         <link
           rel="alternate"
           type="application/rss+xml"
