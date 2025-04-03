@@ -30,25 +30,8 @@ type TransactionType =
   | "DISPUTE"
   | "WITHDRAWAL"
   | "WITHDRAWAL_CANCEL"
-  | "PAYOUT";
-
-function direction(transactionType: TransactionType): 1 | -1 | 0 {
-  switch (transactionType) {
-    case "SETTLEMENT":
-      return 1; // Cobro
-    case "REFUND":
-    case "CHARGEBACK":
-    case "DISPUTE":
-    case "WITHDRAWAL":
-    case "PAYOUT":
-      return -1; // Pago
-    case "WITHDRAWAL_CANCEL":
-      return 1; // Un retiro cancelado es volver a tener el dinero disponible.
-    default:
-      console.error(`Unknown transaction type: ${transactionType}`);
-      return 0;
-  }
-}
+  | "PAYOUT"
+  | "PAYOUTS";
 
 function description(transactionType: TransactionType): string {
   switch (transactionType) {
@@ -63,6 +46,7 @@ function description(transactionType: TransactionType): string {
     case "WITHDRAWAL":
       return "Retiro de cuenta bancaria";
     case "PAYOUT":
+    case "PAYOUTS":
       return "Retiro de efectivo";
     case "WITHDRAWAL_CANCEL":
       return "Retiro a la cuenta bancaria cancelado";
@@ -80,7 +64,7 @@ async function fetchTransactions(page: number, page_size: number): Promise<Journ
     id: row.source_id,
     source: fix_name(row.payer_name),
     date: row.transaction_date,
-    amount: row.transaction_amount * direction(row.transaction_type),
+    amount: row.transaction_amount,
     description: description(row.transaction_type),
   }));
 }
