@@ -34,7 +34,9 @@ export const Ledger: React.FC<LedgerPageProps> = ({ ledger }) => {
             </div>
             <div className="hidden sm:block px-2 py-1 text-right">
               {journal.amount >= 0
-                ? journal.amount.toLocaleString(nextConfig.i18n?.defaultLocale)
+                ? Math.abs(journal.amount).toLocaleString(
+                    nextConfig.i18n?.defaultLocale
+                  )
                 : ""}
             </div>
             <div className="hidden sm:block px-2 py-1 text-right secondary-color">
@@ -47,7 +49,7 @@ export const Ledger: React.FC<LedgerPageProps> = ({ ledger }) => {
             <div className="sm:hidden px-2 py-1 text-right">
               {journal.amount >= 0 ? (
                 <span>
-                  {journal.amount.toLocaleString(
+                  {Math.abs(journal.amount).toLocaleString(
                     nextConfig.i18n?.defaultLocale
                   )}
                 </span>
