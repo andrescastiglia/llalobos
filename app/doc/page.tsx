@@ -1,13 +1,13 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-export default function Page() {
-  return (
-    <div className="w-full max-w-4xl mx-auto p-8">
-      <pre className="whitespace-pre-wrap">
-        {`
-CARTA ORGÁNICA
-Del Partido La Libertad Avanza - Seccional Municipal de Lobos
+const tabs = [
+  {
+    id: "tab1",
+    name: "CARTA ORGÁNICA",
+    content: `Del Partido La Libertad Avanza - Seccional Municipal de Lobos
 
 PREÁMBULO
 En el marco de la Constitución de la Nación Argentina, la Ley de Partidos Políticos y la normativa vigente en la Provincia de Buenos Aires, el Partido La Libertad Avanza, con personería a nivel nacional, se constituye en el Municipio de Lobos para representar y defender los intereses de la comunidad. Este documento establece la organización, principios, fines y funcionamiento interno del partido, a fin de obtener la personería jurídica y actuar con transparencia, participación democrática y compromiso social en el ámbito municipal.
@@ -85,16 +85,12 @@ En constancia de lo expuesto, se firma la presente Carta Orgánica en Lobos, a l
 
 David Porchedda
 Coordinador Ejecutivo
-Partido La Libertad Avanza
-`}
-      </pre>
-      <br />
-      <br />
-      <pre className="whitespace-pre-wrap">
-        {`      
-BASE DE ACCION POLITICA
-
-La ineludible tasa de crecimiento demográfico y la inexorable conurbanización, evidenciadas en la experiencia de Canuelas, son el motor que impulsa este plan estratégico. La transformación urbana y social exige una respuesta estructurada y proactiva que permita gestionar de manera ordenada el crecimiento, evitar la proliferación de barrios informales y fortalecer los servicios públicos, garantizando así el desarrollo sostenible y la calidad de vida para todos los habitantes. Esta dinámica demográfica y urbana demanda respuestas innovadoras y ordenadas que aseguren la calidad de vida y el desarrollo sostenible del municipio.
+Partido La Libertad Avanza`,
+  },
+  {
+    id: "tab2",
+    name: "PLATAFORMA ELECTORAL",
+    content: `La ineludible tasa de crecimiento demográfico y la inexorable conurbanización, evidenciadas en la experiencia de Canuelas, son el motor que impulsa este plan estratégico. La transformación urbana y social exige una respuesta estructurada y proactiva que permita gestionar de manera ordenada el crecimiento, evitar la proliferación de barrios informales y fortalecer los servicios públicos, garantizando así el desarrollo sostenible y la calidad de vida para todos los habitantes. Esta dinámica demográfica y urbana demanda respuestas innovadoras y ordenadas que aseguren la calidad de vida y el desarrollo sostenible del municipio.
 
 Etapa 1: Saneamiento Institucional y Optimización Administrativa
   • Transparencia y Rendición de Cuentas
@@ -123,8 +119,31 @@ La evaluación periódica de los avances en infraestructura y servicios permite 
 Una planificación urbana dinámica y actualizada facilita la integración de nuevas áreas de desarrollo, evitando la proliferación descontrolada de barrios informales y optimizando el uso del suelo.
   • Innovación Continua en la Gestión Municipal
 La incorporación de tecnologías y la creación de espacios de diálogo interinstitucional aseguran una gestión adaptativa y eficiente, promoviendo la participación ciudadana y respondiendo a las necesidades emergentes del municipio.
-`}
-      </pre>
+`,
+  },
+];
+
+export default function Page() {
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
+
+  return (
+    <div className="w-full max-w-4xl mx-auto p-8">
+      <div className="flex border-b">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-4 py-2 text-sm font-medium border-b-2 ${
+              activeTab === tab.id ? "inverted-color" : ""
+            }`}
+          >
+            {tab.name}
+          </button>
+        ))}
+      </div>
+      <div className="p-4 border border-t-0 whitespace-pre-wrap">
+        {tabs.find((tab) => tab.id === activeTab)?.content}
+      </div>
 
       <br />
       <br />

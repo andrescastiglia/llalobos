@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "i18next": "^24.2.3",
-    "next": "^15.2.4",
+    "next": "^15.2.5",
     "next-i18next": "^15.4.2",
     "next-sitemap": "^4.2.3",
     "react": "^19.1.0",
@@ -27,14 +27,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@tailwindcss/postcss": "^4.1.2",
+    "@tailwindcss/postcss": "^4.1.3",
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
-    "eslint": "^9.23.0",
-    "eslint-config-next": "^15.2.4",
+    "@types/react-dom": "^19.1.2",
+    "eslint": "^9.24.0",
+    "eslint-config-next": "^15.2.5",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.2",
-    "typescript": "^5.8.2"
+    "tailwindcss": "^4.1.3",
+    "typescript": "^5.8.3"
   }
 }
