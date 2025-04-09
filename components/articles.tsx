@@ -83,6 +83,9 @@ export const Articles: React.FC<ArticlesPageProps> = ({ articles: news }) => {
           {article.has_media && <Audio article={article} />}
         </div>
       ))}
+      <div className="text-xs mt-4 text-right block">
+        La transcripción y el contenido de las noticias fueron generados por IA
+      </div>
     </div>
   );
 };
