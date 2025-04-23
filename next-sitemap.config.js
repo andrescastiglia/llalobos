@@ -4,29 +4,29 @@ module.exports = {
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: "weekly",
-  priority: 1,
+  priority: 0.5,
   exclude: [],
   alternateRefs: [],
   additionalPaths: async (config) => [
     {
       loc: `${config.siteUrl}/news`,
       changefreq: "daily",
-      priority: 1,
+      priority: 0.9,
     },
     {
       loc: `${config.siteUrl}/balance`,
       changefreq: "daily",
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       loc: `${config.siteUrl}/doc`,
-      changefreq: "never",
+      changefreq: "monthly",
       priority: 0.5,
     },    
     {
       loc: `${config.siteUrl}/contact`,
-      changefreq: "never",
-      priority: 0.5,
+      changefreq: "monthly",
+      priority: 0.3,
     },
   ],
   robotsTxtOptions: {
