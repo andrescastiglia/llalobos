@@ -19,7 +19,17 @@ module.exports = {
       priority: 0.8,
     },
     {
-      loc: `${config.siteUrl}/doc`,
+      loc: `${config.siteUrl}/doc?seccion=cartaorganica`,
+      changefreq: "monthly",
+      priority: 0.5,
+    },    
+    {
+      loc: `${config.siteUrl}/doc?seccion=plataformaelectoral`,
+      changefreq: "monthly",
+      priority: 0.5,
+    },    
+    {
+      loc: `${config.siteUrl}/doc?seccion=consejosescolares`,
       changefreq: "monthly",
       priority: 0.5,
     },    
