@@ -33,6 +33,7 @@ jobs:
           script: |
             pm2 stop llalobos || true
             rm -r -f /opt/llalobos/*
+            npm cache clean --force
 
       - name: Transfer
         uses: appleboy/scp-action@master
@@ -53,5 +54,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /opt/llalobos/
-            npm install
+            npm install --verbose
             pm2 start llalobos

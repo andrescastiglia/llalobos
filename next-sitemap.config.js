@@ -38,6 +38,11 @@ module.exports = {
       changefreq: "monthly",
       priority: 0.3,
     },
+    {
+      loc: `${config.siteUrl}/agenda`,
+      changefreq: "daily",
+      priority: 0.8,
+    },
   ],
   robotsTxtOptions: {
     policies: [

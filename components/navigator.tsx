@@ -7,6 +7,7 @@ import {
   FaFolder,
   FaAddressBook,
   FaBookReader,
+  FaCalendar,
 } from "react-icons/fa";
 
 export const Navigator = () => {
@@ -21,34 +22,40 @@ export const Navigator = () => {
   };
 
   return (
-      <nav className={`navbar${menuOpen ? " responsive" : ""}`}>
-        <Link href="/news" onClick={closeMenu}>
-          <span className="flex items-center">
-            <FaNewspaper className="mr-2" />
-            <span>Noticias</span>
-          </span>
-        </Link>
-        <Link href="/balance" onClick={closeMenu}>
-          <span className="flex items-center">
-            <FaBookReader className="mr-2" />
-            <span>Balance</span>
-          </span>
-        </Link>
-        <Link href="/doc" onClick={closeMenu}>
-          <span className="flex items-center">
-            <FaFolder className="mr-2" />
-            <span>Documentos</span>
-          </span>
-        </Link>
-        <Link href="/contact" onClick={closeMenu}>
-          <span className="flex items-center">
-            <FaAddressBook className="mr-2" />
-            <span>Contactos</span>
-          </span>
-        </Link>
-        <a href="#toggle" className="icon" onClick={toggleMenu}>
-          &#9776;
-        </a>
-      </nav>
+    <nav className={`navbar${menuOpen ? " responsive" : ""}`}>
+      <Link href="/news" onClick={closeMenu}>
+        <span className="flex items-center">
+          <FaNewspaper className="mr-2" />
+          <span>Noticias</span>
+        </span>
+      </Link>
+      <Link href="/balance" onClick={closeMenu}>
+        <span className="flex items-center">
+          <FaBookReader className="mr-2" />
+          <span>Balance</span>
+        </span>
+      </Link>
+      <Link href="/agenda" onClick={closeMenu}>
+        <span className="flex items-center">
+          <FaCalendar className="mr-2" />
+          <span>Agenda</span>
+        </span>
+      </Link>
+      <Link href="/doc" onClick={closeMenu}>
+        <span className="flex items-center">
+          <FaFolder className="mr-2" />
+          <span>Documentos</span>
+        </span>
+      </Link>
+      <Link href="/contact" onClick={closeMenu}>
+        <span className="flex items-center">
+          <FaAddressBook className="mr-2" />
+          <span>Contactos</span>
+        </span>
+      </Link>
+      <a href="#toggle" className="icon" onClick={toggleMenu}>
+        &#9776;
+      </a>
+    </nav>
   );
 };

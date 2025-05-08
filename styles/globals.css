@@ -1,9 +1,12 @@
 @import "tailwindcss";
+@import "react-big-calendar/lib/css/react-big-calendar.css";
 
+/*
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
+*/
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -126,4 +129,79 @@ body {
   color: var(--background);
   text-align: center;
   padding: 5px 0;
+}
+
+/* Calendar */
+.rbc-toolbar button {
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+.rbc-toolbar button:hover {
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
+}
+
+.rbc-event.rbc-selected {
+  background-color: var(--quaternary-color) !important;
+  color: #4b0082 !important;
+}
+
+.rbc-event {
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
+}
+
+.rbc-time-view .rbc-event-label {
+  display: none;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-title {
+  margin-bottom: 1em;
+  text-align: center;
+  @apply text-3xl;
+}
+
+.modal-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @apply text-sm;
+}
+
+.modal-section-title {
+  font-weight: bold;
+}
+
+.modal-section-content {
+  font-style: italic;
+}
+
+.modal-divider {
+  margin: 1em 0;
+}
+
+.modal-description {
+  text-align: left;
+  text-indent: 1em;
+  @apply text-lg;
 }
