@@ -157,6 +157,12 @@ body {
   color: var(--background) !important;
 }
 
+.event-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .rbc-time-view .rbc-event-label {
   display: none;
 }
@@ -176,8 +182,11 @@ body {
 }
 
 .modal-title {
+  display: flex;
+  place-content: center;
   margin-bottom: 1em;
-  text-align: center;
+  align-items: center;
+  gap: 0.5em;
   @apply text-3xl;
 }
 
@@ -185,7 +194,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @apply text-sm;
+  @apply text-sm; 
 }
 
 .modal-section-title {
@@ -196,12 +205,17 @@ body {
   font-style: italic;
 }
 
+.modal-footer {
+  text-align: right;
+  font-style: italic;
+  @apply text-sm;
+}
+
 .modal-divider {
   margin: 1em 0;
 }
 
 .modal-description {
   text-align: left;
-  text-indent: 1em;
   @apply text-lg;
 }

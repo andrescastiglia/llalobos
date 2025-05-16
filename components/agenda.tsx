@@ -12,21 +12,28 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import Modal from "react-modal";
 import "moment/locale/es";
 import { baseUrl } from "@/app/ui/const";
+import { FaNewspaper, FaVoteYea } from "react-icons/fa";
 
 moment.locale("es");
 moment.updateLocale("es", {
   week: {
-      dow: 0, 
-    },
+    dow: 0,
+  },
 });
 
 const localizer = momentLocalizer(moment);
+
+enum CalendarType {
+  Elecciones = "Elecciones",
+  Principal = "Principal",
+}
 
 interface AgendaEvent {
   title: string;
   start: Date;
   end: Date;
   description?: string;
+  calendar: CalendarType;
 }
 
 const messages = {
@@ -130,8 +137,16 @@ export const Agenda: React.FC = () => {
       event: (props: EventProps<AgendaEvent>) => {
         const { event } = props;
         return (
-          <div title={event.description} className="text-sm text-center">
-            {event.title}
+          <div
+            title={event.description}
+            className="text-sm text-center event-container"
+          >
+            {event.calendar === CalendarType.Elecciones ? (
+              <FaVoteYea />
+            ) : (
+              <FaNewspaper />
+            )}
+            <span>{event.title}</span>
           </div>
         );
       },
@@ -176,7 +191,16 @@ export const Agenda: React.FC = () => {
           }}
         >
           <div onClick={closeEventDetails}>
-            <div className="modal-title">{selectedEvent.title}</div>
+            <div className="modal-title">
+              <span>
+                {selectedEvent.calendar === CalendarType.Elecciones ? (
+                  <FaVoteYea />
+                ) : (
+                  <FaNewspaper />
+                )}
+              </span>
+              <span>{selectedEvent.title}</span>
+            </div>
             <div className="modal-section">
               <p className="modal-section-title">Inicio:</p>
               <p className="modal-section-content">
@@ -192,7 +216,13 @@ export const Agenda: React.FC = () => {
               </p>
             </div>
             <hr className="modal-divider" />
-            <p className="modal-description">{selectedEvent.description}</p>
+            <div className="modal-description">
+              {selectedEvent.description?.split("\n").map((line, index) => (
+                <p key={index}>{line.trim()}</p>
+              ))}
+            </div>
+            <hr className="modal-divider" />
+            <div className="modal-footer">{selectedEvent.calendar}</div>
           </div>
         </Modal>
       )}
