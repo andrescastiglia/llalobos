@@ -13,6 +13,7 @@ import Modal from "react-modal";
 import "moment/locale/es";
 import { baseUrl } from "@/app/ui/const";
 import { FaNewspaper, FaVoteYea } from "react-icons/fa";
+import { AgendaEvent, AgendaSchema, CalendarType } from "@/components/agendaSchema";
 
 moment.locale("es");
 moment.updateLocale("es", {
@@ -22,19 +23,6 @@ moment.updateLocale("es", {
 });
 
 const localizer = momentLocalizer(moment);
-
-enum CalendarType {
-  Elecciones = "Elecciones",
-  Principal = "Principal",
-}
-
-interface AgendaEvent {
-  title: string;
-  start: Date;
-  end: Date;
-  description?: string;
-  calendar: CalendarType;
-}
 
 const messages = {
   allDay: "Todo el día",
@@ -154,78 +142,81 @@ export const Agenda: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ height: "500px" }}>
-      {loading && <p>Cargando eventos...</p>}
-      <Calendar
-        localizer={localizer}
-        messages={messages}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        date={date}
-        view={view}
-        onNavigate={onNavigate}
-        onView={onView}
-        views={["month", "week", "day", "agenda"]}
-        components={components}
-        selectable={false}
-        onSelectEvent={onSelectEvent}
-      />
-      {selectedEvent && (
-        <Modal
-          isOpen={!!selectedEvent}
-          onRequestClose={closeEventDetails}
-          shouldCloseOnOverlayClick={true}
-          overlayClassName="modal-overlay"
-          style={{
-            content: {
-              top: "50%",
-              left: "50%",
-              right: "auto",
-              bottom: "auto",
-              marginRight: "-50%",
-              transform: "translate(-50%, -50%)",
-              backgroundColor: "var(--background)",
-              color: "var(--foreground)",
-            },
-          }}
-        >
-          <div onClick={closeEventDetails}>
-            <div className="modal-title">
-              <span>
-                {selectedEvent.calendar === CalendarType.Elecciones ? (
-                  <FaVoteYea />
-                ) : (
-                  <FaNewspaper />
-                )}
-              </span>
-              <span>{selectedEvent.title}</span>
+    <>
+      <AgendaSchema events={events} />
+      <div style={{ height: "500px" }}>
+        {loading && <p>Cargando eventos...</p>}
+        <Calendar
+          localizer={localizer}
+          messages={messages}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          date={date}
+          view={view}
+          onNavigate={onNavigate}
+          onView={onView}
+          views={["month", "week", "day", "agenda"]}
+          components={components}
+          selectable={false}
+          onSelectEvent={onSelectEvent}
+        />
+        {selectedEvent && (
+          <Modal
+            isOpen={!!selectedEvent}
+            onRequestClose={closeEventDetails}
+            shouldCloseOnOverlayClick={true}
+            overlayClassName="modal-overlay"
+            style={{
+              content: {
+                top: "50%",
+                left: "50%",
+                right: "auto",
+                bottom: "auto",
+                marginRight: "-50%",
+                transform: "translate(-50%, -50%)",
+                backgroundColor: "var(--background)",
+                color: "var(--foreground)",
+              },
+            }}
+          >
+            <div onClick={closeEventDetails}>
+              <div className="modal-title">
+                <span>
+                  {selectedEvent.calendar === CalendarType.Elecciones ? (
+                    <FaVoteYea />
+                  ) : (
+                    <FaNewspaper />
+                  )}
+                </span>
+                <span>{selectedEvent.title}</span>
+              </div>
+              <div className="modal-section">
+                <p className="modal-section-title">Inicio:</p>
+                <p className="modal-section-content">
+                  {selectedEvent.start.toLocaleDateString()}{" "}
+                  {selectedEvent.start.toLocaleTimeString()}
+                </p>
+              </div>
+              <div className="modal-section">
+                <p className="modal-section-title">Fin:</p>
+                <p className="modal-section-content">
+                  {selectedEvent.end.toLocaleDateString()}{" "}
+                  {selectedEvent.end.toLocaleTimeString()}
+                </p>
+              </div>
+              <hr className="modal-divider" />
+              <div className="modal-description">
+                {selectedEvent.description?.split("\n").map((line, index) => (
+                  <p key={index}>{line.trim()}</p>
+                ))}
+              </div>
+              <hr className="modal-divider" />
+              <div className="modal-footer">{selectedEvent.calendar}</div>
             </div>
-            <div className="modal-section">
-              <p className="modal-section-title">Inicio:</p>
-              <p className="modal-section-content">
-                {selectedEvent.start.toLocaleDateString()}{" "}
-                {selectedEvent.start.toLocaleTimeString()}
-              </p>
-            </div>
-            <div className="modal-section">
-              <p className="modal-section-title">Fin:</p>
-              <p className="modal-section-content">
-                {selectedEvent.end.toLocaleDateString()}{" "}
-                {selectedEvent.end.toLocaleTimeString()}
-              </p>
-            </div>
-            <hr className="modal-divider" />
-            <div className="modal-description">
-              {selectedEvent.description?.split("\n").map((line, index) => (
-                <p key={index}>{line.trim()}</p>
-              ))}
-            </div>
-            <hr className="modal-divider" />
-            <div className="modal-footer">{selectedEvent.calendar}</div>
-          </div>
-        </Modal>
-      )}
-    </div>
+          </Modal>
+        )}
+      </div>
+    </>
   );
 };
