@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "La Libertad Avanza Lobos",
+  title: "La Libertad Avanza - Lobos",
   description:
     "En este espacio, la libertad se encuentra con la transparencia. Creemos en el acceso sin restricciones a la información, donde cada dato es un paso hacia la autonomía individual.",
   keywords: [
@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     "contribuciones",
     "milei",
     "motosierra",
+    "casa de la libertad"
   ],
   openGraph: {
     title: "La Libertad Avanza Lobos",
