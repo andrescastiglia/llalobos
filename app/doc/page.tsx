@@ -15,7 +15,7 @@ En el marco de la Constitución de la Nación Argentina, la Ley de Partidos Pol�
 
 ARTÍCULO 1 - DENOMINACIÓN Y DOMICILIO
 El partido se denomina "Partido La Libertad Avanza - Seccional Municipal de Lobos".
-Su domicilio legal se establece en Profesor Pato Luis Lacoste 67, Lobos, Provincia de Buenos Aires.
+Su domicilio legal se establece en Profesor Pato Luis Lacoste 59, Lobos, Provincia de Buenos Aires.
 
 ARTÍCULO 2 - OBJETIVOS Y FINES
 El Partido tiene como objetivos:

@@ -32,7 +32,7 @@ export const Header = () => {
             ],
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Profesor Pato Luis Lacoste 67",
+              "streetAddress": "Profesor Pato Luis Lacoste 59",
               "addressLocality": "Lobos",
               "addressRegion": "Buenos Aires",
               "addressCountry": "AR"
