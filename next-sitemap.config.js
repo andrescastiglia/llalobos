@@ -5,7 +5,7 @@ module.exports = {
   sitemapSize: 7000,
   changefreq: "weekly",
   priority: 0.5,
-  exclude: ["/", "/news", "/balance", "/doc", "/contact"],
+  exclude: ["/", "/news", "/balance", "/doc", "/contact", "/agenda"],
   alternateRefs: [],
   additionalPaths: async (config) => [
     {
