@@ -19,7 +19,7 @@ module.exports = {
       priority: 0.8,
     },
     {
-      loc: `${config.siteUrl}/doc?seccion=cartaorganica`,
+      loc: `${config.siteUrl}/doc?seccion=reglamentohcd`,
       changefreq: "monthly",
       priority: 0.5,
     },    
