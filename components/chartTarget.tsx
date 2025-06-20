@@ -13,15 +13,15 @@ export const ChartTarget: React.FC<GoalPageProps> = ({ goal }) => {
 
   const cx = 200;
   const cy = 150;
-  const iR = 50;
+  const iR = 60;
   const oR = 100;
   const RADIAN = Math.PI / 180;
   const data = [
-    { name: "A", value: goal.target * 0.75, color: "var(--secondary-color)" },
-    { name: "B", value: goal.target * 0.25, color: "var(--quinary-color)" },
+    { name: "A", value: Number(goal.target) * 0.75, color: "var(--secondary-color)" },
+    { name: "B", value: Number(goal.target) * 0.25, color: "var(--quinary-color)" },
     {
       name: "C",
-      value: goal.balance < goal.target ? 0 : goal.balance - goal.target,
+      value: Number(goal.balance) < Number(goal.target) ? 0 : (Number(goal.balance) - Number(goal.target)),
       color: "var(--quaternary-color)",
     },
   ];
@@ -30,7 +30,7 @@ export const ChartTarget: React.FC<GoalPageProps> = ({ goal }) => {
     total += v.value;
   });
 
-  const ang = 180.0 * (1 - goal.balance / total);
+  const ang = 180.0 * (1 - (Number(goal.balance) / total));
   const length = (iR + 2 * oR) / 3;
   const sin = Math.sin(-RADIAN * ang);
   const cos = Math.cos(-RADIAN * ang);
@@ -46,7 +46,7 @@ export const ChartTarget: React.FC<GoalPageProps> = ({ goal }) => {
 
   return (
     <ResponsiveContainer width={400} height={200}>
-      <PieChart>
+      <PieChart width={400}>
         <Pie
           dataKey="value"
           startAngle={180}

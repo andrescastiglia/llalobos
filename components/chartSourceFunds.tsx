@@ -16,7 +16,7 @@ export const ChartSourceFunds: React.FC<SourceFundsPageProps> = ({
 
   const cx = 200;
   const cy = 150;
-  const iR = 50;
+  const iR = 60;
   const oR = 100;
 
   return (
@@ -33,6 +33,7 @@ export const ChartSourceFunds: React.FC<SourceFundsPageProps> = ({
           outerRadius={oR}
           fill="var(--foreground)"
           label={({ name }) => `${fix_name(name)}`}
+          stroke="none"
         >
           <Label
             value="Origen"
