@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { Navigator } from "@/components/navigator";
@@ -17,49 +16,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-  title: "La Libertad Avanza - Lobos",
-  description:
-    "En este espacio, la libertad se encuentra con la transparencia. Creemos en el acceso sin restricciones a la información, donde cada dato es un paso hacia la autonomía individual.",
-  keywords: [
-    "la libertad avanza",
-    "politica",
-    "lobos",
-    "partido politico",
-    "transparencia",
-    "lla",
-    "libertarios",
-    "afiliacion",
-    "afiliar",
-    "contribuciones",
-    "milei",
-    "motosierra",
-    "casa de la libertad"
-  ],
-  openGraph: {
-    title: "La Libertad Avanza Lobos",
-    description:
-      "En este espacio, la libertad se encuentra con la transparencia. Creemos en el acceso sin restricciones a la información, donde cada dato es un paso hacia la autonomía individual.",
-    url: "https://lalibertadavanzalobos.ar",
-    type: "website",
-    images: [
-      {
-        url: "https://lalibertadavanzalobos.ar/logo.png",
-        width: 192,
-        height: 192,
-        alt: "Logo",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary",
-    title: "La Libertad Avanza Lobos",
-    description:
-      "Contribuciones para gastos del partido, modelo de transparencia para el municipio.",
-    images: ["https://lalibertadavanzalobos.ar/logo.png"],
-  },
-};
 
 export default function RootLayout({
   children,
