@@ -29,6 +29,23 @@ export const AgendaSchema: React.FC<{ events: AgendaEvent[] }> = ({ events }) =>
         "name": "Casa de la Libertad",
         "address": "Profesor Pato Luis Lacoste 59, Lobos, Buenos Aires, Argentina",
       },
+      "image": "https://lalibertadavanzalobos.ar/logo.png",
+      "performer": {
+        "@type": "Organization",
+        "name": "La Libertad Avanza Lobos"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "La Libertad Avanza Lobos",
+        "url": "https://lalibertadavanzalobos.ar"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://lalibertadavanzalobos.ar/agenda",
+        "price": "0",
+        "priceCurrency": "ARS",
+        "availability": "https://schema.org/InStock"
+      }      
     })),
   };
 
